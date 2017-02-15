@@ -427,4 +427,8 @@ class Utilisateur
     {
         return $this->courseEffectuee;
     }
+     public function __toString()
+    {
+        return $this->identifiant;
+    }
 }

@@ -1,10 +1,9 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}AppBundle:ListeCoursesClient:ListeCoursesClients{% endblock %}
+{% block title %}AppBundle:ListeCoursesLivreur:ListeCoursesLivreur{% endblock %}
 
 {% block body %}
-<h1> Liste des courses client</h1>
-Point de retrait   Point de livraison    Etat de la course
+<h1>Liste des courses livreur</h1>
 {% for course in courses%}
     {{course.PdeRetrait}}
     {{course.PdeLivraison}}
