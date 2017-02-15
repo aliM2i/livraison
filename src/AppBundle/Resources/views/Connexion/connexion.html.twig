@@ -1,0 +1,20 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Connexion:Connexion{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Connexion:</h1>
+{% for message in app.session.flashbag.get('info')%}
+    
+    
+    <div class="alert alert-success" role="alert">{{ message }}</div>
+    
+    {% endfor %}
+
+
+
+
+<div class="well clearfix">
+{{form(monForm)}}
+</div>
+{% endblock %}
