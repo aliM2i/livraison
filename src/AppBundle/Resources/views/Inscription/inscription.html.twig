@@ -1,7 +1,12 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}AppBundle:Inscription:Inscription{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Inscription</h1>{{form(monForm)}}
+<h1>Inscription</h1>
+
+<div class="well clearfix">
+{{form(monForm)}}
+</div>
+
 {% endblock %}

@@ -32,7 +32,7 @@ class InscriptionType extends \Symfony\Component\Form\AbstractType{
                         'livreur'=>'ROLE_LIVREUR'
                     )
                 ))
-                ->add("submit", \Symfony\Component\Form\Extension\Core\Type\SubmitType::class);
+                ->add("submit", \Symfony\Component\Form\Extension\Core\Type\SubmitType::class, array('attr' => array('class'=> 'btn btn-primary pull-right')));
        }
     //put your code here
 }
