@@ -7,6 +7,9 @@
  */
 
 namespace AppBundle\DTO;
+
+use \Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Component\Validator\Constraints\Callback;
 /**
  * Description of InscriptionDTO
  *
@@ -40,10 +43,10 @@ class InscriptionDTO {
     function getMdp() {
         return $this->mdp;
     }
-
     function getMdp2() {
         return $this->mdp2;
     }
+    
 
     function getNumVoie() {
         return $this->numVoie;
@@ -84,10 +87,10 @@ class InscriptionDTO {
     function setMdp($mdp) {
         $this->mdp = $mdp;
     }
-
     function setMdp2($mdp2) {
         $this->mdp2 = $mdp2;
     }
+   
 
     function setNumVoie($numVoie) {
         $this->numVoie = $numVoie;
@@ -112,6 +115,16 @@ class InscriptionDTO {
     function setRole($role) {
         $this->role = $role;
     }
-
+    /**
+     * @Callback
+     */
+    public function maCallback(ExecutionContextInterface $context, $payload){
+        if($this->mdp!=$this->mdp2)
+            return $context->buildViolation('Les deux mots de passes doivent être identique')->addViolation ();
+    }
+            
+                
+           
+           
 
 }

@@ -18,13 +18,24 @@ class InscriptionController extends Controller
         
             if($form->isSubmitted() && $form->isValid()){
                 
-                $nom= new \AppBundle\Entity\Nom();
-                $nom->setIdentifiant($dto->getIdentifiant());
-                $nom->setMdp($dto->getMdp());
+                $client= new \AppBundle\Entity\Utilisateur();
+                $client->setIdentifiant($dto->getIdentifiant());
+                $client->setNom($dto->getNom());
+                $client->setPrenom($dto->getPrenom());
+                $client->setMdp($dto->getMdp());
                 
+                $client->setNumVoie($dto->getNumVoie());
+                $client->setCp($dto->getCp());
+                $client->setVille($dto->getVille());
+                $client->setEmail($dto->getEmail());
+                $client->setTel($dto->getTel());
+                $client->setRole($dto->getRole());
                 $em= $this->getDoctrine()->getManager();
-                $em->persist($nom);
+                $em->persist($client);
                 $em->flush();
+                
+                return $this->render('AppBundle:ListeCoursesClient:liste_courses_clients.html.twig');
+                
             }
         return $this->render('AppBundle:Inscription:inscription.html.twig', array(
             "monForm"=>$form->createView()
