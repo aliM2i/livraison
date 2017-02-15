@@ -1,5 +1,5 @@
 <?php
-
+namespace AppBundle\DTO;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,6 +14,7 @@
 class ListeCoursesDTO {
     private $client;   
     private $livreur;    
+    private $role;
     private $pdeRetrait;
     private $pdeLivraison;
     private $etat;
@@ -25,6 +26,9 @@ class ListeCoursesDTO {
 
     function getLivreur() {
         return $this->livreur;
+    }
+     function getRole() {
+        return $this->role;
     }
 
     function getPdeRetrait() {
