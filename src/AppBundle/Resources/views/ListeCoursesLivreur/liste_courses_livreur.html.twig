@@ -14,18 +14,18 @@
                         <tr>
                             <th>Point de retrait</th>
                             <th>Point de livraison</th>
-                            <th>Prix</th>
-                            <th>Etat</th>
+                            <th>Prix</th>                          
                             <th colspan="5"><center>Client</center></th>
                         </tr>
                         <tr>
-                            <th colspan="4"></th>
+                            <th colspan="3"></th>
                             
                             <th>Nom</th>
                             <th>Prénom</th>
                             <th>Tél</th>
                             <th>Voie</th>
                             <th>Ville</th>
+                             <th>Etat</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -33,16 +33,16 @@
             {% for course in courses%}
 
                         <tr>
-                            <td> {{course.PdeRetrait}} </td>              
-                            <td> {{course.PdeLivraison}}  </td>
-                            <td> {{course.prix}} </td>
+                            <td> {{course.PdeRetrait}} </td>  
+                            <td> {{course.PdeLivraison}} </td>   
+                            <td> {{course.prix}} </td>                           
+                            <td> {{course.client.nom}}</td>
+                            <td> {{course.client.prenom}}</td>
+                            <td> {{course.client.tel}}</td>
+                            <td> {{course.client.numVoie}}</td>
+                            <td> {{course.client.ville}}</td>
                             <td> {{course.etat}}</td>
-                            <td> {{course.livreur.nom}}</td>
-                            <td> {{course.livreur.prenom}}</td>
-                            <td> {{course.livreur.tel}}</td>
-                            <td> {{course.livreur.numVoie}}</td>
-                            <td> {{course.livreur.ville}}</td>
-                            <a href="{{ path("filtre", {page: indicePage}) }}">Page {{ indicePage + 1 }}</a> }}">prendre en charge</a>
+                            <td> <a href="{{ path("PriseCoursesLivreur", {idCmd: course.id})}}">prendre en charge</a></td>
                         </tr>
 
 

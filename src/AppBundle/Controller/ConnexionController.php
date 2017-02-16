@@ -42,11 +42,11 @@ class ConnexionController extends Controller
                  
                  if($utilisateur->getRole() == 'ROLE_LIVREUR'){
                      
-                     return $this->redirectToRoute('app_listecourseslivreur_listecoursesclients');
+                     return $this->redirectToRoute('ListeCoursesLivreur');
                      
                  }
                  
-                 return $this->redirectToRoute('app_listecoursesclient_listecoursesclients');       
+                 return $this->redirectToRoute('ListeCoursesClients');       
                          
              }else
                  {
