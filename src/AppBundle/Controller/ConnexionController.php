@@ -54,6 +54,7 @@ class ConnexionController extends Controller
                  if($identifiant == 'admin' && $mdp=='admin'){
                      $request->getSession()->getFlashBag()->add('info', 'Vous êtes connecté en tant qu\'administrateur');
                      $request->getSession()->set('client', 'admin');
+                     return $this->redirectToRoute('utilisateur_index');
                  }else{
                      $request->getSession()->getFlashBag()->add('info', 'la connexion à échoué');
                  }
