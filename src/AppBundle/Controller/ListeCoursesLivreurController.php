@@ -21,10 +21,8 @@ class ListeCoursesLivreurController extends Controller
         $qb = new \Doctrine\ORM\QueryBuilder($this->getDoctrine()->getManager()); //Création du form builder
         $qb ->select("c")
             ->from("AppBundle:Course", "c")
-            ->join ("c.livreur", "u")                
-         //   ->andWhere ("u.role='livreur'")
-            ->andWhere('u.id= '.$id );
-
+            ->andWhere('c.livreur = '.$id ) // prise en charge par le livreur
+            ->orWhere("c.livreur IS NULL " ); // les libres
         $courses = array();
 
         // Exécute requete
@@ -43,19 +41,15 @@ class ListeCoursesLivreurController extends Controller
          $dto =new \AppBundle\Entity\Course();
             // constitution des données à afficher dans le formuaire
             $qb = new \Doctrine\ORM\QueryBuilder($this->getDoctrine()->getManager()); //Création du form builder
-            //  $request->getSession()->get("client");
-            //-  dump($request->getSession()->get("client"));
-            // die;
-            
+
             // Récup util
-            // $id = $request->getSession()->get("client")->getId();
-            $id=1;
+            $id = $request->getSession()->get('client')->getId();
             $livreur = $this->getDoctrine()->getRepository("AppBundle:Utilisateur")->find($id);
             
             // Récup cmd
             $course = $this->getDoctrine()->getRepository("AppBundle:Course")->find($idCmd);
             
-            $course->setEtat('Prise en Charge');
+            $course->setEtat('en cours de livraison');
             $course->setLivreur($livreur);
             $livreur->addCourseEffectuee($course);
             $this->getDoctrine()->getManager()->flush();
