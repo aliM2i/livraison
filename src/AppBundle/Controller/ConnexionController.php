@@ -35,13 +35,13 @@ class ConnexionController extends Controller
              $nb=count($client);
              
              if($nb==1){
-                 $request->getSession()->set('client_id', $client->getId());
+                 $request->getSession()->set('client', $client);
                  $request->getSession()->getFlashBag()->add('info', 'Vous êtes connecté');        
                          
              }else{
                  if($identifiant == 'admin' && $mdp=='admin'){
                      $request->getSession()->getFlashBag()->add('info', 'Vous êtes connecté en tant qu\'administrateur');
-                     $request->getSession()->set('client_id', 'admin');
+                     $request->getSession()->set('client', 'admin');
                  }else{
                      $request->getSession()->getFlashBag()->add('info', 'la connexion à échoué');
                  }
