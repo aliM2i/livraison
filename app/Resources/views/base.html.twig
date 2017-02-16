@@ -51,13 +51,12 @@
                         
                         {% elseif app.session.get('client').role is defined and app.session.get('client').role == 'ROLE_CLIENT' %}
                             
-                            <li><a href="{{ path('app_listecoursesclient_listecoursesclients') }}">Liste des courses</a></li>
-                            <li><a href="{{ path('app_ajoutercourse_ajoutercourse') }}">Ajouter course</a></li>
-                            <li><a href="{{ path('deconnexion') }}">Déconnexion</a></li>
+                            <li><a href="{{ path('ListeCoursesClients') }}">Liste des courses</a></li>
+                             <li><a href="{{ path('deconnexion') }}">Déconnexion</a></li>
                             
                         {% elseif app.session.get('client').role is defined and app.session.get('client').role == 'ROLE_LIVREUR' %}
                              
-                            <li><a href="{{ path('app_listecourseslivreur_listecoursesclients') }}">Liste des courses</a></li>
+                            <li><a href="{{ path('ListeCoursesLivreur') }}">Liste des courses</a></li>
                             <li><a href="{{ path('deconnexion') }}">Déconnexion</a></li>
                            
                         {% else %}   
