@@ -39,18 +39,18 @@
                             
                             <li><a href="{{ path('utilisateur_index') }}">Utilisateurs</a></li>
                             <li><a href="{{ path('course_index') }}">Courses</a></li>
-                            <li><a href="#">Déonnexion</a></li>
+                            <li><a href="{{ path('deconnexion') }}">Déconnexion</a></li>
                        
                         
                         {% elseif app.session.get('client').role == 'ROLE_CLIENT' %}
                             
                             <li><a href="{{ path('app_listecoursesclient_listecoursesclients') }}">Liste des courses</a></li>
-                             <li><a href="#">Déonnexion</a></li>
+                             <li><a href="{{ path('deconnexion') }}">Déconnexion</a></li>
                             
                         {% elseif app.session.get('client').role == 'ROLE_LIVREUR' %}
                              
                             <li><a href="{{ path('app_listecourseslivreur_listecoursesclients') }}">Liste des courses</a></li>
-                            <li><a href="#">Déonnexion</a></li>
+                            <li><a href="{{ path('deconnexion') }}">Déconnexion</a></li>
                            
                         {% else %}   
                             

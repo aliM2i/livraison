@@ -67,5 +67,18 @@ class ConnexionController extends Controller
             // ...
         ));
     }
-
+    /**
+     * 
+     * @Route("/logout", name="deconnexion")
+     * 
+     */ 
+    public function deconnexionAction(\Symfony\Component\HttpFoundation\Request $request) {
+        
+        $request->getSession()->clear();
+        
+        $request->getSession()->getFlashBag()->add('info', 'Vous êtes déconnecté !');
+        
+        return $this->redirect($this->generateUrl('app_connexion_connexion'));
+        
+    }
 }
