@@ -26,6 +26,7 @@ class CourseController extends Controller
 
         $courses = $em->getRepository('AppBundle:Course')->findAll();
 
+
         return $this->render('course/index.html.twig', array(
             'courses' => $courses,
         ));

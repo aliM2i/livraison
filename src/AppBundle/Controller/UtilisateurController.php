@@ -20,11 +20,15 @@ class UtilisateurController extends Controller
      * @Route("/", name="utilisateur_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $utilisateurs = $em->getRepository('AppBundle:Utilisateur')->findAll();
+        
+                
+       // dump( $request->getSession()->get('client'));
+       // die;
 
         return $this->render('utilisateur/index.html.twig', array(
             'utilisateurs' => $utilisateurs,

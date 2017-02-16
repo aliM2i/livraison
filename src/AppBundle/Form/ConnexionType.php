@@ -17,7 +17,7 @@ class ConnexionType extends \Symfony\Component\Form\AbstractType{
     public function buildForm(\Symfony\Component\Form\FormBuilderInterface $builder, array $option){
         $builder->add("identifiant", \Symfony\Component\Form\Extension\Core\Type\TextType::class)
                 ->add("mdp", \Symfony\Component\Form\Extension\Core\Type\PasswordType::class)
-                ->add("submit", \Symfony\Component\Form\Extension\Core\Type\SubmitType::class);
+                ->add("Connexion", \Symfony\Component\Form\Extension\Core\Type\SubmitType::class, array('attr' => array('class'=> 'btn btn-primary pull-right')));
     }
     //put your code here
 }
