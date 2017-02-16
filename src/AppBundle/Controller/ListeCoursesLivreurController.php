@@ -12,20 +12,24 @@ class ListeCoursesLivreurController extends Controller
      */
      public function ListeCoursesClientsAction(\Symfony\Component\HttpFoundation\Request $req)
     {
-         $dto =new \AppBundle\DTO\ListeCoursesDTO();
-            // constitution des données à afficher dans le formuaire
-            $qb = new \Doctrine\ORM\QueryBuilder($this->getDoctrine()->getManager()); //Création du form builder
-            $qb ->select("c")
-                ->from("AppBundle:Course", "c")
-                ->join ("c.livreur", "u")                
-                ->andWhere ("u.role='livreur'");
-                //->setParameter('client', 1);
-            
-            $courses = array();
-           
-            // Exécute requete
-            $courses = $qb->getQuery()->getResult();
-             dump($courses);
+        $dto =new \AppBundle\DTO\ListeCoursesDTO();
+        
+        $id = $req->getSession()->get('client')->getId();
+        
+      
+        // constitution des données à afficher dans le formuaire
+        $qb = new \Doctrine\ORM\QueryBuilder($this->getDoctrine()->getManager()); //Création du form builder
+        $qb ->select("c")
+            ->from("AppBundle:Course", "c")
+            ->join ("c.livreur", "u")                
+         //   ->andWhere ("u.role='livreur'")
+            ->andWhere('u.id= '.$id );
+
+        $courses = array();
+
+        // Exécute requete
+        $courses = $qb->getQuery()->getResult();
+      
         // retour du rendu    
         return $this->render('AppBundle:ListeCoursesLivreur:liste_courses_livreur.html.twig', array( "courses" => $courses )) ;          
                 
