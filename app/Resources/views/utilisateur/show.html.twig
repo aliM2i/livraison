@@ -3,65 +3,67 @@
 {% block body %}
     <h1>Utilisateur</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ utilisateur.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ utilisateur.nom }}</td>
-            </tr>
-            <tr>
-                <th>Identifiant</th>
-                <td>{{ utilisateur.identifiant }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ utilisateur.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Mdp</th>
-                <td>{{ utilisateur.mdp }}</td>
-            </tr>
-            <tr>
-                <th>Numvoie</th>
-                <td>{{ utilisateur.numVoie }}</td>
-            </tr>
-            <tr>
-                <th>Cp</th>
-                <td>{{ utilisateur.cp }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ utilisateur.ville }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ utilisateur.email }}</td>
-            </tr>
-            <tr>
-                <th>Tel</th>
-                <td>{{ utilisateur.tel }}</td>
-            </tr>
-            <tr>
-                <th>Role</th>
-                <td>{{ utilisateur.role }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive">
 
-    <ul>
+        <table class="table table-bordered table-hover">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ utilisateur.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ utilisateur.nom }}</td>
+                </tr>
+                <tr>
+                    <th>Identifiant</th>
+                    <td>{{ utilisateur.identifiant }}</td>
+                </tr>
+                <tr>
+                    <th>Prenom</th>
+                    <td>{{ utilisateur.prenom }}</td>
+                </tr>
+                <tr>
+                    <th>Mdp</th>
+                    <td>{{ utilisateur.mdp }}</td>
+                </tr>
+                <tr>
+                    <th>Numvoie</th>
+                    <td>{{ utilisateur.numVoie }}</td>
+                </tr>
+                <tr>
+                    <th>Cp</th>
+                    <td>{{ utilisateur.cp }}</td>
+                </tr>
+                <tr>
+                    <th>Ville</th>
+                    <td>{{ utilisateur.ville }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ utilisateur.email }}</td>
+                </tr>
+                <tr>
+                    <th>Tel</th>
+                    <td>{{ utilisateur.tel }}</td>
+                </tr>
+                <tr>
+                    <th>Role</th>
+                    <td>{{ utilisateur.role }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <ul class="list-unstyled list-inline">
         <li>
-            <a href="{{ path('utilisateur_index') }}">Back to the list</a>
+            <a href="{{ path('utilisateur_index') }}" class="btn btn-primary" >Retour à la liste</a>
         </li>
         <li>
-            <a href="{{ path('utilisateur_edit', { 'id': utilisateur.id }) }}">Edit</a>
+            <a href="{{ path('utilisateur_edit', { 'id': utilisateur.id }) }}" class="btn btn-warning" >Modifier</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit"  value="Supprimer" class="btn btn-danger">
             {{ form_end(delete_form) }}
         </li>
     </ul>
