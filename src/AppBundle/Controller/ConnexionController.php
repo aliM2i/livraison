@@ -40,8 +40,7 @@ class ConnexionController extends Controller
                  $request->getSession()->set('client', $utilisateur);
                  $request->getSession()->getFlashBag()->add('info', 'Vous êtes connecté');
                  
-                 $utilisateur = new \AppBundle\Entity\Utilisateur;
-                 if($utilisateur->getRole() == 'livreur'){
+                 if($utilisateur->getRole() == 'ROLE_LIVREUR'){
                      
                      return $this->redirectToRoute('app_listecourseslivreur_listecoursesclients');
                      
