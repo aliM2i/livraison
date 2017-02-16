@@ -19,6 +19,12 @@ class ListeCoursesDTO {
     private $pdeLivraison;
     private $etat;
     private $prix;
+    private $nom;
+    private $prenom;
+    private $numVoie;
+    private $Ville;
+    private $tel;
+    private $identifiant;
     
     function getClient() {
         return $this->client;
@@ -27,7 +33,8 @@ class ListeCoursesDTO {
     function getLivreur() {
         return $this->livreur;
     }
-     function getRole() {
+
+    function getRole() {
         return $this->role;
     }
 
@@ -47,12 +54,40 @@ class ListeCoursesDTO {
         return $this->prix;
     }
 
+    function getNom() {
+        return $this->nom;
+    }
+
+    function getPrenom() {
+        return $this->prenom;
+    }
+
+    function getNumVoie() {
+        return $this->numVoie;
+    }
+
+    function getVille() {
+        return $this->Ville;
+    }
+
+    function getTel() {
+        return $this->tel;
+    }
+
+    function getIdentifiant() {
+        return $this->identifiant;
+    }
+
     function setClient($client) {
         $this->client = $client;
     }
 
     function setLivreur($livreur) {
         $this->livreur = $livreur;
+    }
+
+    function setRole($role) {
+        $this->role = $role;
     }
 
     function setPdeRetrait($pdeRetrait) {
@@ -70,6 +105,31 @@ class ListeCoursesDTO {
     function setPrix($prix) {
         $this->prix = $prix;
     }
+
+    function setNom($nom) {
+        $this->nom = $nom;
+    }
+
+    function setPrenom($prenom) {
+        $this->prenom = $prenom;
+    }
+
+    function setNumVoie($numVoie) {
+        $this->numVoie = $numVoie;
+    }
+
+    function setVille($Ville) {
+        $this->Ville = $Ville;
+    }
+
+    function setTel($tel) {
+        $this->tel = $tel;
+    }
+
+    function setIdentifiant($identifiant) {
+        $this->identifiant = $identifiant;
+    }
+
 
 
 }

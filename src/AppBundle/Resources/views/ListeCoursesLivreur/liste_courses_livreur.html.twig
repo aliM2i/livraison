@@ -4,10 +4,52 @@
 
 {% block body %}
 <h1>Liste des courses livreur</h1>
-{% for course in courses%}
-    {{course.PdeRetrait}}
-    {{course.PdeLivraison}}
-    {{course.prix}}
-    {{course.etat}}<br>
-{% endfor%}
+<div class="row">
+        <div class="col-lg-9">     
+                      
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Point de retrait</th>
+                            <th>Point de livraison</th>
+                            <th>Prix</th>
+                            <th>Etat</th>
+                            <th colspan="5"><center>Client</center></th>
+                        </tr>
+                        <tr>
+                            <th colspan="4"></th>
+                            
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Tél</th>
+                            <th>Voie</th>
+                            <th>Ville</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            {% for course in courses%}
+
+                        <tr>
+                            <td> {{course.PdeRetrait}} </td>              
+                            <td> {{course.PdeLivraison}}  </td>
+                            <td> {{course.prix}} </td>
+                            <td> {{course.etat}}</td>
+                            <td> {{course.livreur.nom}}</td>
+                            <td> {{course.livreur.prenom}}</td>
+                            <td> {{course.livreur.tel}}</td>
+                            <td> {{course.livreur.numVoie}}</td>
+                            <td> {{course.livreur.ville}}</td>
+                            <a href="{{ path("filtre", {page: indicePage}) }}">Page {{ indicePage + 1 }}</a> }}">prendre en charge</a>
+                        </tr>
+
+
+            {% endfor%}
+                    </tbody>
+                    </table>
+ </div>
+        </div>
+    </div> 
 {% endblock %}

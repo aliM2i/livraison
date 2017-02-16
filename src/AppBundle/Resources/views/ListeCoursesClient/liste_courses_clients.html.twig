@@ -4,11 +4,35 @@
 
 {% block body %}
 <h1> Liste des courses client</h1>
-Point de retrait   Point de livraison    Etat de la course
-{% for course in courses%}
-    {{course.PdeRetrait}}
-    {{course.PdeLivraison}}
-    {{course.prix}}
-    {{course.etat}}<br>
-{% endfor%}
+<div class="row">
+        <div class="col-lg-9">     
+                      
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Point de retrait</th>
+                            <th>Point de livraison</th>
+                            <th>Prix</th>
+                            <th>Etat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            {% for course in courses%}
+
+                        <tr>
+                            <td> {{course.PdeRetrait}} </td>              
+                            <td> {{course.PdeLivraison}}  </td>
+                            <td> {{course.prix}} </td>
+                            <td> {{course.etat}}</td>
+                        </tr>
+
+
+            {% endfor%}
+                    </tbody>
+                    </table>
+ </div>
+        </div>
+    </div> 
 {% endblock %}
