@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class ListeCoursesLivreurController extends Controller
 {
     /**
-     * @Route("/ListeCoursesLivreur")
+     * @Route("/ListeCoursesLivreur", name="ListeCoursesLivreur")
      */
      public function ListeCoursesClientsAction(\Symfony\Component\HttpFoundation\Request $req)
     {
@@ -36,27 +36,31 @@ class ListeCoursesLivreurController extends Controller
     }
     
     /**
-     * @Route("/PriseCoursesClients")
+     * @Route("/PriseCoursesLivreur/{idCmd}",name="PriseCoursesLivreur")
      */
-     public function PriseCoursesClientsAction(\Symfony\Component\HttpFoundation\Request $req)
+     public function PriseCoursesLivreurAction(\Symfony\Component\HttpFoundation\Request $request, $idCmd)
     {
-         $dto =new \AppBundle\Entity\ListeCoursesDTO();
+         $dto =new \AppBundle\Entity\Course();
             // constitution des données à afficher dans le formuaire
             $qb = new \Doctrine\ORM\QueryBuilder($this->getDoctrine()->getManager()); //Création du form builder
-            $qb ->select("c")
-                ->from("AppBundle:Course", "c")
-                ->join ("c.livreur", "u")                
-                ->andWhere ("u.role='livreur'");
-                //->setParameter('client', 1);
+            //  $request->getSession()->get("client");
+            //-  dump($request->getSession()->get("client"));
+            // die;
             
-            $courses = array();
+            // Récup util
+            // $id = $request->getSession()->get("client")->getId();
+            $id=1;
+            $livreur = $this->getDoctrine()->getRepository("AppBundle:Utilisateur")->find($id);
+            
+            // Récup cmd
+            $course = $this->getDoctrine()->getRepository("AppBundle:Course")->find($idCmd);
+            
+            $course->setEtat('Prise en Charge');
+            $course->setLivreur($livreur);
+            $livreur->addCourseEffectuee($course);
+            $this->getDoctrine()->getManager()->flush();
            
-            // Exécute requete
-            $courses = $qb->getQuery()->getResult();
-             dump($courses);
-        // retour du rendu    
-        return $this->render('AppBundle:ListeCoursesLivreur:liste_courses_livreur.html.twig', array( "courses" => $courses )) ;          
-                
+            return $this->redirectToRoute('ListeCoursesLivreur');
     }
-
+    
 }
