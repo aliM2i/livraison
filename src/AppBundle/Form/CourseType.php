@@ -13,7 +13,9 @@ class CourseType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('pdeRetrait')->add('pdeLivraison')->add('etat')->add('prix')->add('client')->add('livreur')        ;
+        $builder->add('pdeRetrait')->add('pdeLivraison')->add('etat')->add('prix')
+                ->add('client')
+                ->add('livreur')        ;
     }
     
     /**

@@ -13,7 +13,16 @@ class UtilisateurType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('identifiant')->add('prenom')->add('mdp')->add('numVoie')->add('cp')->add('ville')->add('email')->add('tel')->add('role')        ;
+        $builder->add('role', \Symfony\Component\Form\Extension\Core\Type\ChoiceType::class , array(
+                    'choices'=> array(
+                        'admin'=>'ROLE_ADMIN',
+                        'client'=>'ROLE_CLIENT',
+                        'livreur'=>'ROLE_LIVREUR'
+                    )
+                ))
+                ->add('nom')
+                ->add('identifiant')->add('prenom')->add('mdp')->add('numVoie')->add('cp')->add('ville')->add('email')->add('tel')
+                        ;
     }
     
     /**

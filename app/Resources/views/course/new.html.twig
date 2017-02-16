@@ -1,16 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Course creation</h1>
+    <h1>Ajouter une course</h1>
 
+    <div class="well">
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Ajouter" class="btn btn-warning pull-right" /><br><br>
     {{ form_end(form) }}
-
-    <ul>
+    </div>
+    
+    <ul class="list-unstyled">
         <li>
-            <a href="{{ path('course_index') }}">Back to the list</a>
+            <a href="{{ path('course_index') }}"  class="btn btn-primary">Retour à la liste</a>
         </li>
     </ul>
 {% endblock %}

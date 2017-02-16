@@ -3,43 +3,51 @@
 {% block body %}
     <h1>Courses list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Pderetrait</th>
-                <th>Pdelivraison</th>
-                <th>Etat</th>
-                <th>Prix</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for course in courses %}
-            <tr>
-                <td><a href="{{ path('course_show', { 'id': course.id }) }}">{{ course.id }}</a></td>
-                <td>{{ course.pdeRetrait }}</td>
-                <td>{{ course.pdeLivraison }}</td>
-                <td>{{ course.etat }}</td>
-                <td>{{ course.prix }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('course_show', { 'id': course.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('course_edit', { 'id': course.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-lg-9">     
+                      
+            <div class="table-responsive">
 
-    <ul>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Pderetrait</th>
+                            <th>Pdelivraison</th>
+                            <th>Etat</th>
+                            <th>Prix</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for course in courses %}
+                        <tr>
+                            <td><a href="{{ path('course_show', { 'id': course.id }) }}">{{ course.id }}</a></td>
+                            <td>{{ course.pdeRetrait }}</td>
+                            <td>{{ course.pdeLivraison }}</td>
+                            <td>{{ course.etat }}</td>
+                            <td>{{ course.prix }}</td>
+                            <td>
+                                <ul class="list-unstyled list-inline">
+                                    <li>
+                                        <a href="{{ path('course_show', { 'id': course.id }) }}" class="btn btn-info">Voir</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('course_edit', { 'id': course.id }) }}" class="btn btn-warning">Modifier</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+             </div>
+        </div>
+    </div> 
+
+    <ul class="list-unstyled">
         <li>
-            <a href="{{ path('course_new') }}">Create a new course</a>
+            <a href="{{ path('course_new') }}" class="btn btn-warning">Ajouter une course</a>
         </li>
     </ul>
 {% endblock %}
