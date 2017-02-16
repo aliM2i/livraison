@@ -17,8 +17,8 @@ class CourseType extends AbstractType
                 ->add('etat', \Symfony\Component\Form\Extension\Core\Type\ChoiceType::class, array(
                      'choices'=> array(
                         'libre'=>'libre',
-                        'prise en charge'=>'prise en charge',
-                        'terminée'=>'terminée',
+                        'en cours de livraison'=>'en cours de livraison',
+                        'livrée'=>'livrée',
                     )
                 ))
                 
