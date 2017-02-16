@@ -25,23 +25,35 @@ class ConnexionController extends Controller
                 
                 $repository=$em->getRepository('AppBundle:Utilisateur');
                 
-                $client = $repository->findOneBy(
+ 
+                $utilisateur = $repository->findOneBy(
                         array(
                             'identifiant'=>$identifiant,
                             'mdp'=>$mdp
-                        )
-                        );
-             
-             $nb=count($client);
+                        ));
+                        
+            
+                
+             $nb=count($utilisateur);
              
              if($nb==1){
-                 $request->getSession()->set('client_id', $client->getId());
-                 $request->getSession()->getFlashBag()->add('info', 'Vous êtes connecté');        
+                 $request->getSession()->set('client', $utilisateur);
+                 $request->getSession()->getFlashBag()->add('info', 'Vous êtes connecté');
+                 
+                 $utilisateur = new \AppBundle\Entity\Utilisateur;
+                 if($utilisateur->getRole() == 'livreur'){
+                     
+                     return $this->redirectToRoute('app_listecourseslivreur_listecoursesclients');
+                     
+                 }
+                 
+                 return $this->redirectToRoute('app_listecoursesclient_listecoursesclients');       
                          
-             }else{
+             }else
+                 {
                  if($identifiant == 'admin' && $mdp=='admin'){
                      $request->getSession()->getFlashBag()->add('info', 'Vous êtes connecté en tant qu\'administrateur');
-                     $request->getSession()->set('client_id', 'admin');
+                     $request->getSession()->set('client', 'admin');
                  }else{
                      $request->getSession()->getFlashBag()->add('info', 'la connexion à échoué');
                  }
@@ -55,5 +67,18 @@ class ConnexionController extends Controller
             // ...
         ));
     }
-
+    /**
+     * 
+     * @Route("/logout", name="deconnexion")
+     * 
+     */ 
+    public function deconnexionAction(\Symfony\Component\HttpFoundation\Request $request) {
+        
+        $request->getSession()->clear();
+        
+        $request->getSession()->getFlashBag()->add('info', 'Vous êtes déconnecté !');
+        
+        return $this->redirect($this->generateUrl('app_connexion_connexion'));
+        
+    }
 }

@@ -30,9 +30,40 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         
-                      <li><a href="{{ path('app_inscription_inscription') }}">Inscription</a></li>
-                      <li><a href="{{ path('app_listecoursesclient_listecoursesclients') }}">Liste des courses</a></li>
-                      <li><a href="{{ path('app_connexion_connexion') }}">Connexion</a></li>
+                        {% if app.session.get('client').role is defined %}
+                             <li><a>Bonjour {{ app.session.get('client').prenom }} {{ app.session.get('client').nom }}</a></li>
+                        {% endif %}  
+                        
+                        {% if app.session.get('client') == 'admin' %}
+                            
+                            
+                            <li><a href="{{ path('utilisateur_index') }}">Utilisateurs</a></li>
+                            <li><a href="{{ path('course_index') }}">Courses</a></li>
+                            <li><a href="{{ path('deconnexion') }}">Déconnexion</a></li>
+                       
+                        
+                        {% elseif app.session.get('client').role == 'ROLE_CLIENT' %}
+                            
+                            <li><a href="{{ path('app_listecoursesclient_listecoursesclients') }}">Liste des courses</a></li>
+                             <li><a href="{{ path('deconnexion') }}">Déconnexion</a></li>
+                            
+                        {% elseif app.session.get('client').role == 'ROLE_LIVREUR' %}
+                             
+                            <li><a href="{{ path('app_listecourseslivreur_listecoursesclients') }}">Liste des courses</a></li>
+                            <li><a href="{{ path('deconnexion') }}">Déconnexion</a></li>
+                           
+                        {% else %}   
+                            
+                            <li><a href="{{ path('app_inscription_inscription') }}">Inscription</a></li>
+                            <li><a href="{{ path('app_connexion_connexion') }}">Connexion</a></li>
+                            
+                        {% endif %}  
+                        
+                            
+                         
+                        
+                        
+                        
                       
                       
                       
