@@ -55,5 +55,5 @@ class CourseType extends AbstractType
         return 'appbundle_course';
     }
 
-
+    
 }
