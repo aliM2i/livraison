@@ -17,7 +17,8 @@
                             <th>Prix</th>                          
                             <th>Nom du livreur</th>
                             <th>Prénom du livreur</th>
-                            <th>Etat</th>                           
+                            <th>Etat</th>     
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,8 +31,13 @@
                             <td> {{course.livreur.nom}}</td>
                             <td> {{course.livreur.prenom}}</td>                          
                             <td> {{course.etat}}</td>
+                             {% if course.etat != 'Livrée' %}
+                                 <td> <a href="{{ path("ValidationReceptionCourse", {idCmd: course.id})}}">validation de la réception</a></td>
+                            {% else %}   
+                                <td></td>
+                            {% endif %}
+                          
                         </tr>
-
 
             {% endfor%}
                     </tbody>
