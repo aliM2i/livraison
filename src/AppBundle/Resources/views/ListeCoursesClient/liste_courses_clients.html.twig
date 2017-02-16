@@ -31,9 +31,13 @@
                             <td> {{course.livreur.nom}}</td>
                             <td> {{course.livreur.prenom}}</td>                          
                             <td> {{course.etat}}</td>
-                            <td> <a href="{{ path("ValidationReceptionCourse", {idCmd: course.id})}}">validation de la réception</a></td>
+                             {% if course.etat != 'Livrée' %}
+                                 <td> <a href="{{ path("ValidationReceptionCourse", {idCmd: course.id})}}">validation de la réception</a></td>
+                            {% else %}   
+                                <td></td>
+                            {% endif %}
+                          
                         </tr>
-
 
             {% endfor%}
                     </tbody>

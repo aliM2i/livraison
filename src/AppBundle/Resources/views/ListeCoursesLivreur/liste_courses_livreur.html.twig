@@ -12,13 +12,14 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Point de retrait</th>
-                            <th>Point de livraison</th>
-                            <th>Prix</th>                          
+                            <th colspan="3"></th>
+                                                   
                             <th colspan="5"><center>Client</center></th>
                         </tr>
                         <tr>
-                            <th colspan="3"></th>
+                            <th>Point de retrait</th>
+                            <th>Point de livraison</th>
+                            <th>Prix</th>   
                             
                             <th>Nom</th>
                             <th>Prénom</th>
@@ -42,7 +43,11 @@
                             <td> {{course.client.numVoie}}</td>
                             <td> {{course.client.ville}}</td>
                             <td> {{course.etat}}</td>
-                            <td> <a href="{{ path("VsalidationReceptionCourse", {idCmd: course.id})}}">prendre en charge</a></td>
+                            {% if course.livreur.id is not defined %}
+                                <td> <a href="{{ path("PriseCoursesLivreur", {idCmd: course.id})}}">prendre en charge</a></td>
+                            {% else %}   
+                                <td>En cours</td>
+                            {% endif %}
                         </tr>
 
 

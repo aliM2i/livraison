@@ -31,7 +31,20 @@ class CourseType extends AbstractType
                             ->where('u.role = :role')
                             ->setParameter('role','ROLE_CLIENT'); 
                 },
+                        
+                'required'=>false
+                ))
+                        
+                ->add('livreur', \Symfony\Bridge\Doctrine\Form\Type\EntityType::class, array(
+                'class'         => 'AppBundle\Entity\Utilisateur',
+                'query_builder' => function ($repository) { 
+                    return $repository->createQueryBuilder('u')
+                            ->where('u.role = :role')
+                            ->setParameter('role','ROLE_LIVREUR'); 
+                }, 
+                'required'=>false
                 ));
+                
                 
               
                 
