@@ -25,7 +25,7 @@ class ListeCoursesClientController extends Controller
             $qb ->select("c")
                 ->from("AppBundle:Course", "c")
                 ->join ("c.client", "u")                
-                ->andWhere ('u.id= '.$id );;
+                ->andWhere ('u.id= '.$id );
                 //->setParameter('client', 1);
                                                
             

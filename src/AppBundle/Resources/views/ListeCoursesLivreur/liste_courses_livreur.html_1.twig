@@ -1,0 +1,60 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:ListeCoursesLivreur:ListeCoursesLivreur{% endblock %}
+
+{% block body %}
+<h1>Liste des courses livreur</h1>
+<div class="row">
+        <div class="col-lg-9">     
+                      
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th colspan="3"></th>
+                                                   
+                            <th colspan="5"><center>Client</center></th>
+                        </tr>
+                        <tr>
+                            <th>Point de retrait</th>
+                            <th>Point de livraison</th>
+                            <th>Prix</th>   
+                            
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Tél</th>
+                            <th>Voie</th>
+                            <th>Ville</th>
+                             <th>Etat</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            {% for course in courses%}
+
+                        <tr>
+                            <td> {{course.PdeRetrait}} </td>  
+                            <td> {{course.PdeLivraison}} </td>   
+                            <td> {{course.prix}} </td>                           
+                            <td> {{course.client.nom}}</td>
+                            <td> {{course.client.prenom}}</td>
+                            <td> {{course.client.tel}}</td>
+                            <td> {{course.client.numVoie}}</td>
+                            <td> {{course.client.ville}}</td>
+                            <td> {{course.etat}}</td>
+                            {% if course.livreur.id is not defined %}
+                                <td> <a href="{{ path("PriseCoursesLivreur", {idCmd: course.id})}}">prendre en charge</a></td>
+                            {% else %}   
+                                <td>En cours</td>
+                            {% endif %}
+                        </tr>
+
+
+            {% endfor%}
+                    </tbody>
+                    </table>
+ </div>
+        </div>
+    </div> 
+{% endblock %}

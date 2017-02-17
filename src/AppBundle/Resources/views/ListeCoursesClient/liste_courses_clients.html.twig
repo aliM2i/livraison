@@ -28,8 +28,8 @@
                             <td> {{course.PdeRetrait}} </td>  
                             <td> {{course.PdeLivraison}} </td>   
                             <td> {{course.prix}} </td>                           
-                            <td> {{course.livreur.nom}}</td>
-                            <td> {{course.livreur.prenom}}</td>                          
+                            <td> {% if course.livreur.nom is defined %} {{course.livreur.nom}} {% endif %}</td>
+                            <td> {% if course.livreur.prenom is defined %}{{course.livreur.prenom}} {% endif %}</td>                          
                             <td> {{course.etat}}</td>
                              {% if course.etat != 'Livrée' %}
                                  <td> <a href="{{ path("ValidationReceptionCourse", {idCmd: course.id})}}">validation de la réception</a></td>
