@@ -42,7 +42,9 @@
                             <td> {{course.etat}}</td>
                             {% if course.livreur.id is not defined %}
                                 <td> <a href="{{ path("PriseCoursesLivreur", {idCmd: course.id})}}">prendre en charge</a></td>
-                            {% else %}   
+                            {% elseif course.etat=='Livrée' %}   
+                                <td></td>
+                            {% else %}    
                                 <td>En cours</td>
                             {% endif %}
                         </tr>
