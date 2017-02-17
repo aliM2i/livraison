@@ -26,7 +26,7 @@ class AjouterCourseType extends AbstractType {
         $builder->add('PdeRetrait', \Symfony\Component\Form\Extension\Core\Type\TextType::class)
                 ->add('PdeLivraison', \Symfony\Component\Form\Extension\Core\Type\TextType::class)
                 ->add('prix', \Symfony\Component\Form\Extension\Core\Type\MoneyType::class)
-                ->add('validez', \Symfony\Component\Form\Extension\Core\Type\SubmitType::class);
+                ->add('validez', \Symfony\Component\Form\Extension\Core\Type\SubmitType::class, array('attr' => array('class'=> 'btn btn-primary pull-right')));
     }
     
  /**
