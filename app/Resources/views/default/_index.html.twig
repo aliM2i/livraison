@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+          
+            <div class="row">
+                
+                
+                <a href="{{ path('app_connexion_connexion') }}">
+                
+                    <div class="col-xs-offset-2 col-xs-4 ">
+
+                        <div class="text-center">
+
+                            <i class="fa fa-user fa-5x" aria-hidden="true"></i>
+
+                            <br>Connexion
+                        </div>
+
+                    </div>
+                    
+                   
+                </a>
+                
+                
+                <a href="{{ path('app_inscription_inscription') }}">
+                
+                <div class="col-xs-4">
+                    
+                    <div class="text-center">
+                    
+                        <i class="fa fa-address-card-o fa-5x" aria-hidden="true"></i>
+                    
+                        <br>Inscription
+                    </div>
+                    
+                    
+                </div>
+                    
+                    
+                </a>
+                
+            </div>
+            
+
+            
+            
+            
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
