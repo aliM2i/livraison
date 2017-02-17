@@ -83,14 +83,13 @@ calculate = function(){
     
     
     // distance
-        adrClient = "paris, porte de la chapelle";
-        adrLivraison = "paris, place stalingrad";
+ 
 
         var service = new google.maps.DistanceMatrixService();
         service.getDistanceMatrix(
                 {
-                    origins: origin,
-                    destinations: destination,
+                    origins: [origin],
+                    destinations: [destination],
                     travelMode: google.maps.TravelMode.BICYCLING,
                 }, function (response) {// Callback
 
@@ -98,9 +97,14 @@ calculate = function(){
                     var elements = response.rows[0].elements[0];
                     var distanceEnMetres = elements.distance.value;
                     var dureeEnSecondes = elements.duration.value;
+                    
+                    document.getElementById('ajouter_course_prix').value= elements.distance.value/1000*0.2;
 
-                    alert("Distance: " + elements.distance.text + " ,durée: " + elements.duration.text);
+                    //alert("Distance: " + elements.distance.text + " ,durée: " + elements.duration.text);
                 });
+                
+                
+ 
 };
 
 initialize();

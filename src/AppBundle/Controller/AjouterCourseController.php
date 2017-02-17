@@ -21,7 +21,8 @@ class AjouterCourseController extends Controller
           $sessionClient = $request->getSession()->get('client');  
           $course= new \AppBundle\Entity\Course();
           $course->setPdeLivraison($dto->getPdeLivraison());
-          $course->setPdeRetrait($dto->getPdeRetrait());        
+          $course->setPdeRetrait($dto->getPdeRetrait());
+          $course->setPrix($dto->getPrix());
           $course->setEtat('libre');
           
           
