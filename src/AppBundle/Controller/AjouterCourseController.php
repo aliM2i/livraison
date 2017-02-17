@@ -18,15 +18,23 @@ class AjouterCourseController extends Controller
         
         if($form->isSubmitted() && $form->isValid()){
            
-         // $sessionClient = $request->getSession()->get('client');  
-          $client= new \AppBundle\Entity\Course();
-          $client->setPdeLivraison($dto->getPdeLivraison());
-          $client->setPdeRetrait($dto->getPdeRetrait());        
-          $client->setEtat('libre');
-          //$client->setClient($sessionClient);
+          $sessionClient = $request->getSession()->get('client');  
+          $course= new \AppBundle\Entity\Course();
+          $course->setPdeLivraison($dto->getPdeLivraison());
+          $course->setPdeRetrait($dto->getPdeRetrait());        
+          $course->setEtat('libre');
+          
+          
           
           $em= $this->getDoctrine()->getManager();
-          $em->persist($client);
+          
+          
+          
+          $client=$em->find("AppBundle:Utilisateur", $sessionClient->getId());
+          $course->setClient($client);
+          
+          
+          $em->persist($course);
           $em->flush();
                 
               return $this->redirectToRoute('ListeCoursesClients');  
