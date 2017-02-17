@@ -3,7 +3,7 @@
 {% block title %}AppBundle:ListeCoursesClient:ListeCoursesClients{% endblock %}
 
 {% block body %}
-<h1> Liste des courses client</h1>
+<h1> Liste de vos courses en cours</h1>
 <div class="row">
         <div class="col-lg-9">     
                       
@@ -31,8 +31,10 @@
                             <td> {% if course.livreur.nom is defined %} {{course.livreur.nom}} {% endif %}</td>
                             <td> {% if course.livreur.prenom is defined %}{{course.livreur.prenom}} {% endif %}</td>                          
                             <td> {{course.etat}}</td>
-                             {% if course.etat != 'Livrée' %}
+                             {% if course.etat != 'Livrée' and  course.livreur.nom is defined %}
                                  <td> <a href="{{ path("ValidationReceptionCourse", {idCmd: course.id})}}">validation de la réception</a></td>
+                            {% elseif course.livreur.nom is not defined %} 
+                                <td>En attente d'un livreur</td>
                             {% else %}   
                                 <td></td>
                             {% endif %}

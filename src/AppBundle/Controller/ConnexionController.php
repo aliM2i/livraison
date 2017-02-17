@@ -34,30 +34,30 @@ class ConnexionController extends Controller
                         
             
                 
-             $nb=count($utilisateur);
+            $nb=count($utilisateur);
              
-             if($nb==1){
-                 $request->getSession()->set('client', $utilisateur);
-                 $request->getSession()->getFlashBag()->add('info', 'Vous êtes connecté');
+            if($nb==1){
+                $request->getSession()->set('client', $utilisateur);
+                $request->getSession()->getFlashBag()->add('info', 'Vous êtes connecté');
                  
-                 if($utilisateur->getRole() == 'ROLE_LIVREUR'){
+                if($utilisateur->getRole() == 'ROLE_LIVREUR'){
                      
                      return $this->redirectToRoute('ListeCoursesLivreur');
                      
-                 }
+                }elseif($utilisateur->getRole() == 'ROLE_CLIENT'){
                  
-                 return $this->redirectToRoute('ListeCoursesClients');       
-                         
-             }else
-                 {
-                 if($identifiant == 'admin' && $mdp=='admin'){
+                    return $this->redirectToRoute('ListeCoursesClients');       
+                }else{
                      $request->getSession()->getFlashBag()->add('info', 'Vous êtes connecté en tant qu\'administrateur');
                      $request->getSession()->set('client', 'admin');
                      return $this->redirectToRoute('utilisateur_index');
-                 }else{
-                     $request->getSession()->getFlashBag()->add('info', 'la connexion à échoué');
-                 }
+                }   
+             }else
+             {
+                
+                    $request->getSession()->getFlashBag()->add('info', 'la connexion à échoué');
              }
+             
             
         
             }
